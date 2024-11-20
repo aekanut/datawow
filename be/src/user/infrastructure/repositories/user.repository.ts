@@ -6,10 +6,13 @@ import { User } from '../schemas/user.schema';
 @Injectable()
 export class UserRepository {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
-  create() {
-    throw new Error('Method not implemented.');
+
+  async createByUsername(username: string) {
+    const user = await this.userModel.create({ username });
+    return user.save();
   }
-  find() {
-    throw new Error('Method not implemented.');
+
+  async findByUsername(username: string) {
+    return this.userModel.findOne({ username });
   }
 }

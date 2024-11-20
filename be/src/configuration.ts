@@ -6,4 +6,5 @@ export default () => ({
     password: process.env.MONGO_PASSWORD || 'password',
     db: process.env.MONGO_DB || 'datawow',
   },
+  jwtSecret: process.env.JWT_SECRET || 'jwt-secret',
 });
